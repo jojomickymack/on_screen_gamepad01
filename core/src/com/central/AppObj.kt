@@ -18,7 +18,6 @@ object AppObj {
 
     val sb = SpriteBatch()
     val cam = OrthographicCamera(width, height)
-    val cam2 = OrthographicCamera(width, height)
     val view = StretchViewport(480f, 360f, cam)
     val stg = Stage(view, sb)
 

@@ -15,7 +15,7 @@ notification box that appears when a button is pressed - the 'hud stage' is the 
 the Gdx.input.InputProcessor is bound to the 'hud stage'
 
 - note that if you connect a gamepad it'll 'just work'. Also note that in AppObj there's an unused instance of GamepadCtl. 
-That is the class that makes it work - see 
+That is the class that makes it work and there being an instance of it alone makes it listen for gamepad input - see 
 [https://github.com/libgdx/libgdx/wiki/Controllers](https://github.com/libgdx/libgdx/wiki/Controllers)
 
 - instead of binding actions to actual input events (ie Keys.SPACE -> player.jump), the keys and events are all mapped to 

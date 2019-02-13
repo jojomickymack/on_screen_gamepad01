@@ -10,6 +10,7 @@ import com.central.input.InputCtl
 import com.central.input.OnScreenGamepad
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
+import ktx.scene2d.Scene2DSkin
 
 object AppObj {
 
@@ -35,4 +36,8 @@ object AppObj {
     val osc = OnScreenGamepad()
 
     lateinit var app: App
+
+    init {
+        Scene2DSkin.defaultSkin = this.skin
+    }
 }

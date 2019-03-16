@@ -4,6 +4,8 @@ This is the same as a different template project I have, but it has an input 'mo
 package called input that can easily be dropped into a project). It relies on some pngs (the images for the buttons), which 
 are in the android/assets/input folder.
 
+![gampad.gif](.github/gamepad.gif?raw=true)
+
 Being a little more complex than the ktx_template project, there's a few structural things that are implemented here to 
 support a background/ foreground.
 

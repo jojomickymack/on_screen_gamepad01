@@ -40,4 +40,13 @@ object AppObj {
     init {
         Scene2DSkin.defaultSkin = this.skin
     }
+
+    fun dispose() {
+        this.stg.dispose()
+        this.hudSb.dispose()
+        this.hudStg.dispose()
+        this.sr.dispose()
+        this.skin.dispose()
+        this.osc.dispose()
+    }
 }

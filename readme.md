@@ -10,7 +10,7 @@ Being a little more complex than the ktx_template project, there's a few structu
 support a background/ foreground.
 
 - the AppObj class contains instances of most of what supports the game and those instances are used like static/singleton 
-members 
+members - all of the 'disposable' members have their 'dispose()' method called on them when the game quits
 
 - there is stage and a 'hud stage' which each have their own spritebatch, camera, and view. The stage is only there for the 
 notification box that appears when a button is pressed - the 'hud stage' is the top layer and in the Game screen's init block 

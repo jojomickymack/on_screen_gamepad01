@@ -11,10 +11,15 @@ class OnScreenGamepad: Table() {
     private val buttonWidth = 100f
     private val buttonHeight = 100f
 
-    private val aImg = Image(Texture("input/ctrl_a.png"))
-    private val bImg = Image(Texture("input/ctrl_b.png"))
-    private val rightImg = Image(Texture("input/ctrl_r.png"))
-    private val leftImg = Image(Texture("input/ctrl_l.png"))
+    private val aTex = Texture("input/ctrl_a.png")
+    private val bTex = Texture("input/ctrl_b.png")
+    private val rightTex = Texture("input/ctrl_r.png")
+    private val leftTex = Texture("input/ctrl_l.png")
+
+    private val aImg = Image(aTex)
+    private val bImg = Image(bTex)
+    private val rightImg = Image(rightTex)
+    private val leftImg = Image(leftTex)
 
     init {
         aImg.setSize(buttonWidth, buttonHeight)
@@ -72,5 +77,12 @@ class OnScreenGamepad: Table() {
                 AppObj.ic.lPressed = false
             }
         })
+    }
+
+    fun dispose() {
+        this.aTex.dispose()
+        this.bTex.dispose()
+        this.rightTex.dispose()
+        this.leftTex.dispose()
     }
 }

@@ -9,12 +9,10 @@ are in the android/assets/input folder.
 Being a little more complex than the ktx_template project, there's a few structural things that are implemented here to 
 support a background/ foreground.
 
-- the AppObj class contains instances of most of what supports the game and those instances are used like static/singleton 
-members - all of the 'disposable' members have their 'dispose()' method called on them when the game quits
+- the App class contains instances of a set of camera, stage, and viewport for the background and foreground. They are exposed to different 
+parts of the game using an argument.
 
-- there is stage and a 'hud stage' which each have their own spritebatch, camera, and view. The stage is only there for the 
-notification box that appears when a button is pressed - the 'hud stage' is the top layer and in the Game screen's init block 
-the Gdx.input.InputProcessor is bound to the 'hud stage'
+- the 'hud stage' is the top layer and in the Game screen's init block the Gdx.input.InputProcessor is bound to the 'hud stage'
 
 - note that if you connect a gamepad it'll 'just work'. Also note that in AppObj there's an unused instance of GamepadCtl. 
 That is the class that makes it work and there being an instance of it alone makes it listen for gamepad input - see 

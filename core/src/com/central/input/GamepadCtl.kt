@@ -5,9 +5,10 @@ import com.badlogic.gdx.controllers.ControllerListener
 import com.badlogic.gdx.controllers.Controllers
 import com.badlogic.gdx.controllers.PovDirection
 import com.badlogic.gdx.math.Vector3
-import com.central.AppObj
+import com.central.App
 
-class GamepadCtl : ControllerListener {
+
+class GamepadCtl(app: App) : ControllerListener {
 
     var hasController = false
 
@@ -45,11 +46,11 @@ class GamepadCtl : ControllerListener {
                     when (buttonIndex) {
                         XBox360Pad.BUTTON_A,
                         AndroidPad.BUTTON_A -> {
-                            AppObj.ic.aPressed = true
+                            app.ic.aPressed = true
                         }
                         XBox360Pad.BUTTON_B,
                         AndroidPad.BUTTON_B-> {
-                            AppObj.ic.bPressed = true
+                            app.ic.bPressed = true
                         }
                     }
                     return false
@@ -60,11 +61,11 @@ class GamepadCtl : ControllerListener {
                     when (buttonIndex) {
                         XBox360Pad.BUTTON_A,
                         AndroidPad.BUTTON_A -> {
-                            AppObj.ic.aPressed = false
+                            app.ic.aPressed = false
                         }
                         XBox360Pad.BUTTON_B,
                         AndroidPad.BUTTON_B -> {
-                            AppObj.ic.bPressed = false
+                            app.ic.bPressed = false
                         }
                     }
                     return false
@@ -75,26 +76,26 @@ class GamepadCtl : ControllerListener {
                     when (axisIndex) {
                         XBox360Pad.AXIS_LEFT_X -> {
                             if (value < -0.2) {
-                                AppObj.ic.lPressed = true
-                                AppObj.ic.rPressed = false
+                                app.ic.lPressed = true
+                                app.ic.rPressed = false
                             } else if (value > 0.2) {
-                                AppObj.ic.lPressed = false
-                                AppObj.ic.rPressed = true
+                                app.ic.lPressed = false
+                                app.ic.rPressed = true
                             } else {
-                                AppObj.ic.lPressed = false
-                                AppObj.ic.rPressed = false
+                                app.ic.lPressed = false
+                                app.ic.rPressed = false
                             }
                         }
                         AndroidPad.AXIS_LEFT_X -> {
                             if (value < -0.2) {
-                                AppObj.ic.lPressed = true
-                                AppObj.ic.rPressed = false
+                                app.ic.lPressed = true
+                                app.ic.rPressed = false
                             } else if (value > 0.2) {
-                                AppObj.ic.lPressed = false
-                                AppObj.ic.rPressed = true
+                                app.ic.lPressed = false
+                                app.ic.rPressed = true
                             } else {
-                                AppObj.ic.lPressed = false
-                                AppObj.ic.rPressed = false
+                                app.ic.lPressed = false
+                                app.ic.rPressed = false
                             }
                         }
                     }
@@ -107,16 +108,16 @@ class GamepadCtl : ControllerListener {
                     if (povIndex == 0) {
                         when (value) {
                             XBox360Pad.BUTTON_DPAD_LEFT -> {
-                                AppObj.ic.lPressed = true
-                                AppObj.ic.rPressed = false
+                                app.ic.lPressed = true
+                                app.ic.rPressed = false
                             }
                             XBox360Pad.BUTTON_DPAD_RIGHT -> {
-                                AppObj.ic.lPressed = false
-                                AppObj.ic.rPressed = true
+                                app.ic.lPressed = false
+                                app.ic.rPressed = true
                             }
                             XBox360Pad.BUTTON_DPAD_CENTER -> {
-                                AppObj.ic.lPressed = false
-                                AppObj.ic.rPressed = false
+                                app.ic.lPressed = false
+                                app.ic.rPressed = false
                             }
                         }
                     }

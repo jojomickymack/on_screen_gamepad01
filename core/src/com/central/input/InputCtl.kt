@@ -3,16 +3,17 @@ package com.central.input
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
-import com.central.AppObj
+import com.central.App
 
-class InputCtl {
+
+class InputCtl(app: App) {
     var lPressed = false
     var rPressed = false
     var aPressed = false
     var bPressed = false
 
     init {
-        AppObj.hudStg.addListener(object : InputListener() {
+        app.hudStg.addListener(object : InputListener() {
             override fun keyDown(event: InputEvent, keycode: Int): Boolean {
                 if (keycode == Input.Keys.SPACE) {
                     aPressed = true

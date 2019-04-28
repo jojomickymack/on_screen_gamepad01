@@ -1,35 +1,39 @@
 package com.central.screens
 
 import com.badlogic.gdx.Gdx
-import com.central.App
-import com.central.AppObj
-import ktx.app.KtxScreen
-import com.badlogic.gdx.graphics.Color.*
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.*
+import com.badlogic.gdx.graphics.Color.*
 import com.badlogic.gdx.scenes.scene2d.ui.Label
+import com.badlogic.gdx.scenes.scene2d.ui.Window
 import com.badlogic.gdx.utils.Align
 import ktx.actors.centerPosition
 import ktx.actors.plusAssign
 import ktx.graphics.*
 import ktx.scene2d.*
+import ktx.app.KtxScreen
+import com.central.App
 
 
-class Game(val application: App) : KtxScreen {
-    private val sr = AppObj.sr
+class Game(val app: App) : KtxScreen {
+    private val sr = ShapeRenderer()
     private var rotation = 0.0f
-    private val width = Gdx.graphics.width.toFloat()
-    private val height = Gdx.graphics.height.toFloat()
-    private val textWindow = window("")
-    private var label = Label("nothing", Scene2DSkin.defaultSkin)
+    private var textWindow: Window
+    private lateinit var label: Label
+
     private var buttonChange = false
 
     init {
-        AppObj.stg += textWindow
+        textWindow = window("") {
+            label = label("nothing")
+        }
 
-        AppObj.hudStg += AppObj.osc
-        Gdx.input.inputProcessor = AppObj.hudStg
+        app.stg += textWindow
 
-        textWindow.setSize(AppObj.hudStg.width / 4, AppObj.hudStg.height / 8)
+        app.hudStg += app.osc
+        Gdx.input.inputProcessor = app.hudStg
+
+        textWindow.setSize(app.hudStg.width / 4, app.hudStg.height / 8)
         textWindow.isVisible = false
 
         textWindow += label
@@ -43,7 +47,7 @@ class Game(val application: App) : KtxScreen {
 
         with(sr) {
             use(Line) {
-                translate(width / 2, height / 2, 0f)
+                translate(app.width / 2, app.height / 2, 0f)
                 rotate(0f, 0f, 1f, rotation)
                 color = WHITE
                 rect(0f - 75, 0f - 75, 150f, 150f)
@@ -55,23 +59,23 @@ class Game(val application: App) : KtxScreen {
                 circle(0f, 0f, 200f, 25)
 
                 color = PINK
-                circle(0f, height, 200f, 25)
+                circle(0f, app.height, 200f, 25)
 
                 color = YELLOW
-                circle(width, height, 200f, 25)
+                circle(app.width, app.height, 200f, 25)
 
                 color = BLUE
-                circle(width, 0f, 200f, 25)
+                circle(app.width, 0f, 200f, 25)
             }
         }
 
-        AppObj.stg.act(delta)
-        AppObj.stg.draw()
+        app.stg.act(delta)
+        app.stg.draw()
 
-        AppObj.hudStg.act(delta)
-        AppObj.hudStg.draw()
+        app.hudStg.act(delta)
+        app.hudStg.draw()
 
-        with(AppObj.ic) {
+        with(app.ic) {
             if (!lPressed && !rPressed && !aPressed && !bPressed) {
                 buttonChange = false
                 textWindow.isVisible = false
@@ -88,5 +92,10 @@ class Game(val application: App) : KtxScreen {
                 }
             }
         }
+    }
+
+    override fun dispose() {
+        sr.dispose()
+        super.dispose()
     }
 }
